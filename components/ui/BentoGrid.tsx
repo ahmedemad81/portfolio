@@ -1,7 +1,7 @@
 'use client'
 
 import { useState } from "react";
-import { FaCopy } from "react-icons/fa";
+import { FaCopy, FaDownload } from "react-icons/fa";
 import Lottie from "react-lottie";
 import { cn } from "@/lib/utils/cn";
 import { BackgroundGradientAnimation } from "./BackgroundGradient";
@@ -54,6 +54,24 @@ export const BentoGridItem = ({
     setCopied(true);
   };
 
+  const [downloaded, setDownloaded] = useState(false);
+
+  const handleDownload = () => {
+    // Check if the file has already been downloaded
+    if (!downloaded) {
+      // Create an anchor tag
+      const link = document.createElement('a');
+      link.href = '/Ahmed Emad_CV.pdf'; // The path to the CV file
+      link.download = 'Ahmed Emad_CV'; // The default filename for the downloaded file
+      document.body.appendChild(link); // Append to the body temporarily
+      link.click(); // Programmatically click the link to trigger the download
+      document.body.removeChild(link); // Remove the link from the body
+  
+      // Update the state or perform any other actions after download
+      setDownloaded(true);
+    }
+  };
+
   return (
     <div
       className={cn(
@@ -65,7 +83,7 @@ export const BentoGridItem = ({
         backgroundColor: 'linear-gradient(90deg, rgba(2,0,100,1) 0%, rgba(4,4,45,1) 35%, rgba(17,13,57,1) 65%, rgba(45,32,83,1) 87%)',
       }}
     >
-      <div className={`${id === 6 && 'flex justify-center'} h-full`}>
+      <div className={`${( id === 6 || id === 7 ) && 'flex justify-center'} h-full`}>
         <div className="w-full h-full absolute">
           {img && (
             <img
@@ -88,8 +106,23 @@ export const BentoGridItem = ({
           )}
         </div>
 
-        {id === 6 && ( 
+        {(( id === 6 )) && ( 
           <BackgroundGradientAnimation >
+
+          </BackgroundGradientAnimation>
+        )}
+
+        
+        {(( id === 7 )) && ( 
+          <BackgroundGradientAnimation 
+            gradientBackgroundStart="rgba(22,26,49,1)"
+            gradientBackgroundEnd="rgba(22,26,49,1)"
+            firstColor="#161a31"
+            secondColor="#E61E31"
+            thirdColor="#bC2D3"
+            fourthColor="#E61E31"
+            fifthColor="#12786"
+          >
 
           </BackgroundGradientAnimation>
         )}
@@ -105,30 +138,37 @@ export const BentoGridItem = ({
           </div>
 
           <div
-            className={`font-sans text-lg lg:text-3xl max-w-96 font-bold z-10`}>
+            className={`font-sans text-lg lg:text-3xl max-w-96 font-bold z-10 text-[#e8e9f8]`}>
             {title}
           </div>
 
           {id === 2 && <GridGlobe />}
 
           {id === 3 && (
-            <div className="flex gap-1 lg:gap-5 w-fit absolute -right-3 lg:-right-2"> 
-              <div className="flex flex-col gap-3 lg:gap-8"> 
-                {['Python', 'SQL', 'R'].map
+            <div className="flex gap-1 lg:gap-4 w-fit absolute right-1 lg:right-2"> 
+              <div className="flex flex-col gap-2 lg:gap-3"> 
+                {['Python', 'PyTorch' ,'R', 'SQL' ].map
                 ((tech, i) => (
                   <span key={i} className="py-2 lg:py-4 lg:px-3 px-3 text-xs lg:text-base 
-                  opacity-50 lg:opacity-100 rounded-lg text-center bg-[#10132E]">
+                  opacity-50 lg:opacity-80 rounded-lg text-center bg-[#10132E]">
                     {tech}
                     </span>
                 ))}
-                <span className="py-4 px-3 rounded-lg text-center bg-[#10132E]"/>
               </div>
-              <div className="flex flex-col gap-3 lg:gap-8"> 
-              <span className="py-4 px-3 rounded-lg text-center bg-[#10132E]"/>
-                {['React', 'Next.js', 'TypeScript'].map
+              <div className="flex flex-col gap-2 lg:gap-3"> 
+                {['C++', 'C#' , 'Node.js','MongoDB'].map
                 ((tech, i) => (
                   <span key={i} className="py-2 lg:py-4 lg:px-3 px-3 text-xs lg:text-base 
-                  opacity-50 lg:opacity-100 rounded-lg text-center bg-[#10132E]">
+                  opacity-50 lg:opacity-80 rounded-lg text-center bg-[#10132E]">
+                    {tech}
+                    </span>
+                ))}
+              </div>
+              <div className="flex flex-col gap-2 lg:gap-3"> 
+                {['React.js', 'Next.js', 'JavaScript' , 'TypeScript'].map
+                ((tech, i) => (
+                  <span key={i} className="py-2 lg:py-4 lg:px-3 px-3 text-xs lg:text-base 
+                  opacity-50 lg:opacity-80 rounded-lg text-center bg-[#10132E]">
                     {tech}
                     </span>
                 ))}
@@ -136,7 +176,7 @@ export const BentoGridItem = ({
             </div>
             )}
 
-            {id === 6 && (
+            {( id === 6) && (
               <div className="mt-5 relative"> 
                 <div className={`absolute -bottom-5 right-0`}>
                   <Lottie options={{
@@ -154,6 +194,28 @@ export const BentoGridItem = ({
                   position="left"
                   otherClasses="!bg-[#161a31] text-white"
                   handleClick={handleCopy}
+                />
+              </div>
+            )}
+
+            {( id === 7) && (
+              <div className="mt-5 relative"> 
+                <div className={`absolute -bottom-5 right-0`}>
+                  <Lottie options={{
+                    loop: downloaded,
+                    autoplay: downloaded,
+                    animationData,
+                    rendererSettings : {
+                      preserveAspectRatio: 'xMidYMid slice'
+                    }
+                  }}/>
+                </div>
+                <MagicButton
+                  title= {downloaded ? 'Downloaded!' : 'Download CV'}
+                  icon = { <FaDownload />}
+                  position="left"
+                  otherClasses="!bg-[#161a31] text-white"
+                  handleClick={handleDownload}
                 />
               </div>
             )}
