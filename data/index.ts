@@ -64,7 +64,7 @@ export const gridItems = [
   },
   {
     id: 7,
-    title: "Do you want to download my resume?",
+    title: "Do you want to download my CV?",
     description: "",
     className: "lg:col-span-5 md:col-span-6 md:row-span-1",
     imgClassName: "",
