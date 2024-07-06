@@ -21,7 +21,7 @@ const RecentProjects = () => {
                                 <CardItem translateZ="100" className="w-full mb-1">
                                     <img
                                         src={project.img}
-                                        className="h-auto w-auto rounded-xl"
+                                        className="lg:h-72 lg:w-full md:h-60 md:w-auto rounded-xl"
                                         alt="thumbnail"
                                     />
                                 </CardItem>
@@ -57,7 +57,7 @@ const RecentProjects = () => {
                                     ))}
                                     
 
-                                    <div className="absolute right-0 flex justify-center items-center">
+                                    <div className="absolute right-0 justify-center md:flex items-center hidden">
                                     <p className="flex lg:text-base md:text-xs text-sm text-purple">
                                         Check Project
                                     </p>

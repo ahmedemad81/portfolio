@@ -106,23 +106,15 @@ export const BentoGridItem = ({
           )}
         </div>
 
-        {(( id === 6 )) && ( 
-          <BackgroundGradientAnimation >
-
-          </BackgroundGradientAnimation>
-        )}
-
-        
-        {(( id === 7 )) && ( 
+        {(( id === 6 || id === 7)) && ( 
           <BackgroundGradientAnimation 
-            gradientBackgroundStart="rgba(22,26,49,1)"
-            gradientBackgroundEnd="rgba(22,26,49,1)"
-            firstColor="#161a31"
-            secondColor="#E61E31"
-            thirdColor="#bC2D3"
-            fourthColor="#E61E31"
-            fifthColor="#12786"
+          firstColor="24,26,49"
+          secondColor="7,20,20"
+          thirdColor="15,79,115"
+          fourthColor="0,3,25"
+          fifthColor="8,11,17"
           >
+            
 
           </BackgroundGradientAnimation>
         )}
