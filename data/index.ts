@@ -81,7 +81,7 @@ export const projects = [
     des: "Enhances healthcare efficiency through Computer Vision and Conversational AI, featuring a Medical Image Captioner using LSTM & Co-attention for diagnosis.",
     img: "/mdvision.png",
     iconLists: ["/python.svg","/numpy.svg", "/opencv.svg", "/pytorch.svg", "scikit-learn.svg"],
-    link: "https://mdvision.vercel.app/",
+    link: "https://github.com/ahmedemad81/MD-Vision",
   },
   {
     id: 2,
