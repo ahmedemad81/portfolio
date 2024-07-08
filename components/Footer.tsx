@@ -10,7 +10,7 @@ const Footer = () => {
             <h1 className='heading lg:max-w-[45vw]'>
                 Ready to take the next step? 
                 <p className='text-purple'>
-                    Let's work together
+                    Let&apos;s work together
                 </p>
             </h1>
 
