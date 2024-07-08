@@ -1,3 +1,4 @@
+import { url } from "inspector";
 
 
 export const gridItems = [
@@ -226,13 +227,11 @@ export const socialMedia = [
   {
     id: 1,
     img: "/git.svg",
+    url: "https://www.github.com/ahmedemad81",
   },
   {
     id: 2,
-    img: "/twit.svg",
-  },
-  {
-    id: 3,
     img: "/link.svg",
+    url: "https://www.linkedin.com/in/ahmed-emad-02a306221/",
   },
 ];
